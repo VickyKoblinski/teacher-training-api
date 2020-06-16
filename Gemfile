@@ -161,6 +161,9 @@ group :development, :test do
   gem "factory_bot_rails", "~> 5.2"
   gem "fakefs", require: "fakefs/safe"
   gem "faker"
+
+  # For processing of names
+  gem "levenshtein-ffi"
 end
 
 group :development do

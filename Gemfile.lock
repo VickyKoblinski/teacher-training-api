@@ -232,6 +232,8 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
+    levenshtein-ffi (1.1.0)
+      ffi (~> 1.9)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -513,6 +515,7 @@ DEPENDENCIES
   jsonb_accessor
   jwt
   kaminari
+  levenshtein-ffi
   listen (>= 3.0.5, < 3.3)
   logstash-logger (~> 0.26.1)
   open_api-rswag-api
