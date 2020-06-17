@@ -72,11 +72,9 @@ private
 
       [establishment, log]
     else
-      log << if site_postcode.present?
-               :no_postcode
-             else
-               :no_establishment_match_postcode
-             end
+      log << (site_postcode.present? ? :no_postcode : :no_establishment_match_postcode)
+
+      [nil, log]
     end
   end
 
@@ -90,13 +88,9 @@ private
     unless found_establishment
       if establishments.none? { |e| check_name_matches_establishment(name, e) }
         log << :no_names_matched
-      end
-
-      if establishments.none? { |e| check_name_distance(name, e) }
+      elsif establishments.none? { |e| check_name_distance(name, e) }
         log << :no_names_close_enough
-      end
-
-      if establishments.none? { |e| check_establishment_open(e) }
+      else
         log << :no_name_matching_establishments_open
       end
     end
