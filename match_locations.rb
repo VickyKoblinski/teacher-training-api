@@ -1,4 +1,10 @@
 
+# Run this like so:
+#   rails runner match_locations.rb edubasealldata20200616.csv
+#
+# You'll need to download the edubase from
+# https://get-information-schools.service.gov.uk/Downloads
+
 require 'pry'
 
 class EdubaseMatcherService
