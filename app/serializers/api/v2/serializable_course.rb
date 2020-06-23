@@ -6,7 +6,8 @@ module API
       class << self
         def enrichment_attribute(name, enrichment_name = name)
           attribute name do
-            @object.enrichments.last&.__send__(enrichment_name)
+            # @object.enrichments.last&.__send__(enrichment_name)
+            @object.latest_enrichment&.__send__(enrichment_name)
           end
         end
       end
@@ -69,7 +70,7 @@ module API
         edit_options = @object.edit_course_options
 
         edit_options[:modern_languages] =
-          serializer_service.execute(object: edit_options[:modern_languages])[:serialized][:data]
+          serializer_service.execute(object: edit_options[:modern_languages].includes(:financial_incentive))[:serialized][:data]
         edit_options[:subjects] =
           serializer_service.execute(object: edit_options[:subjects])[:serialized][:data]
         edit_options[:modern_languages_subject] =

@@ -94,6 +94,9 @@ class Course < ApplicationRecord
            source: :subject,
            class_name: "ModernLanguagesSubject"
 
+  has_one :published_enrichment, -> { where(status: "published") }, class_name: "CourseEnrichment"
+  has_one :latest_enrichment, -> { order(created_at: :desc, id: :desc).limit(1) }, class_name: "CourseEnrichment"
+
   has_many :enrichments,
            class_name: "CourseEnrichment" do
     def find_or_initialize_draft
