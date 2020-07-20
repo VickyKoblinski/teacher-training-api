@@ -39,23 +39,32 @@ describe API::V2::CoursesController, type: :controller do
 
   describe "#update_subjects" do
     let(:enrichment) { build(:course_enrichment, :initial_draft) }
-    let(:previous_subjects) {[ create(:primary_subject, :primary_with_english)]}
-    let(:updated_subjects) {create(:primary_subject, :primary_with_mathematics)}
-    let(:previous_course_name) {'primary with English'}
+    let(:previous_subject) {create(:primary_subject, :primary_with_english)}
+    let(:updated_subject) {create(:primary_subject, :primary_with_mathematics)}
+    let(:previous_course_name) {'Primary with english'}
     let(:course) {
       create(:course,
+             name: previous_course_name,
              site_statuses: [site_status],
              enrichments: [enrichment],
-             subjects: [updated_subjects])
+             subjects: [previous_subject])
     }
+    let(:updated_course) { create(:course, subjects: [updated_subject])}
 
     it "sends the subjects updated notification" do
-      expect(NotificationService::SubjectsUpdated).to receive(:call).with(course: course, previous_subject: previous_subjects, updated_subject: course.subjects, previous_course_name: previous_course_name)
+      expect(NotificationService::SubjectsUpdated)
+        .to receive(:call)
+              .with(
+                course: an_instance_of(Course),
+                previous_subject_names: ["Primary with English"],
+                updated_subject_names: ["Primary with mathematics"],
+                previous_course_name: previous_course_name
+              )
       post :update, params: {
         recruitment_cycle_year: RecruitmentCycle.current_recruitment_cycle.year,
         provider_code: course.provider.provider_code,
         code: course.course_code,
-        course: {subjects_ids: [updated_subjects.id]},
+        course: {subjects_ids: [updated_subject.id]},
       }
     end
   end

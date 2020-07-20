@@ -12,8 +12,8 @@ describe SubjectUpdateEmailMailer, type: :mailer do
     let(:mail) do
       described_class.subject_update_email(
         course: course,
-        previous_subject: previous_subject.subject_name,
-        updated_subject: updated_subject.subject_name,
+        previous_subject_names: [previous_subject.subject_name],
+        updated_subject_names: [updated_subject.subject_name],
         previous_course_name: previous_course_name,
         recipient: user,
         )

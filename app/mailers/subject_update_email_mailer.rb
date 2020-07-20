@@ -3,8 +3,8 @@ class SubjectUpdateEmailMailer < GovukNotifyRails::Mailer
 
   def subject_update_email(
     course:,
-    previous_subject:,
-    updated_subject:,
+    previous_subject_names:,
+    updated_subject_names:,
     previous_course_name:,
     recipient:
   )
@@ -17,8 +17,8 @@ class SubjectUpdateEmailMailer < GovukNotifyRails::Mailer
       course_code: course.course_code,
       subject_change_datetime: gov_uk_format(course.updated_at),
       course_url: create_course_url(course),
-      previous_subject: previous_subject,
-      updated_subject: updated_subject,
+      previous_subject: previous_subject_names.first,
+      updated_subject: updated_subject_names.first,
       previous_course_name: previous_course_name,
       updated_course_name: course.name
     )
