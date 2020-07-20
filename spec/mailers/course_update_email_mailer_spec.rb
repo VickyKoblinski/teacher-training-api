@@ -73,13 +73,6 @@ describe CourseUpdateEmailMailer, type: :mailer do
     it "includes the updated value" do
       expect(mail.govuk_notify_personalisation[:updated_value]).to eq("UPDATED")
     end
-
-    it "includes the URL for the course in the personalisation" do
-      url = "#{Settings.find_url}" \
-        "/course/#{course.provider.provider_code}" \
-        "/#{course.course_code}"
-      expect(mail.govuk_notify_personalisation[:course_url]).to eq(url)
-    end
   end
 
   context "study mode is updated" do

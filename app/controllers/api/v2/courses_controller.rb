@@ -176,6 +176,8 @@ module API
         if request_has_duplicate_subject_ids?
           @course.errors.add(:subjects, :duplicate)
         else
+          previous_subjects = @course.subjects
+          previous_course_name = @course.name
           @course.subjects = []
 
           @course.subjects = Subject.find(subject_ids)
@@ -185,6 +187,7 @@ module API
           end
 
           @course.name = @course.generate_name
+          NotificationService::SubjectsUpdated.call(course: @course, previous_subject: previous_subjects, updated_subject: @course.subjects, previous_course_name: previous_course_name)
         end
       end
 
