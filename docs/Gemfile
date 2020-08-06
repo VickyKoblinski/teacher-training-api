@@ -4,6 +4,8 @@ source "https://rubygems.org"
 
 # Include the tech docs gem
 gem "govuk_tech_docs", git: "https://github.com/DFE-Digital/tech-docs-gem"
+gem "govuk_openapi_reference", git: "https://github.com/DFE-Digital/govuk_openapi_reference", branch: "initial-implementation"
+# gem "govuk_openapi_reference", path: "../../govuk_openapi_reference"
 
 group :test do
   gem "rspec"

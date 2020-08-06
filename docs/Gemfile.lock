@@ -19,6 +19,15 @@ GIT
       sass
       sprockets (= 4.0.0.beta10)
 
+PATH
+  remote: ../../govuk_openapi_reference
+  specs:
+    govuk_openapi_reference (0.1.0)
+      activesupport
+      openapi3_parser
+      redcarpet
+      rouge
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -208,6 +217,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  govuk_openapi_reference!
   govuk_tech_docs!
   rspec
 
