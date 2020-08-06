@@ -1,4 +1,15 @@
 GIT
+  remote: https://github.com/DFE-Digital/govuk_openapi_reference
+  revision: 02b9f2cb470688e1c6e1ae44a6035793e60a498b
+  branch: initial-implementation
+  specs:
+    govuk_openapi_reference (0.1.0)
+      activesupport
+      openapi3_parser
+      redcarpet
+      rouge
+
+GIT
   remote: https://github.com/DFE-Digital/tech-docs-gem
   revision: 73d658e5f60eaae1ea5579b9550d5d3a0c35d070
   specs:
@@ -18,15 +29,6 @@ GIT
       redcarpet (~> 3.3.2)
       sass
       sprockets (= 4.0.0.beta10)
-
-PATH
-  remote: ../../govuk_openapi_reference
-  specs:
-    govuk_openapi_reference (0.1.0)
-      activesupport
-      openapi3_parser
-      redcarpet
-      rouge
 
 GEM
   remote: https://rubygems.org/
