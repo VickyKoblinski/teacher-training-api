@@ -85,7 +85,7 @@ RSpec.describe "POST /providers/:provider_code/courses/:course_code" do
       it "should return an error stating valid age ranges must be 4 years or greater" do
         expect(response).to have_http_status(:unprocessable_entity)
         expect(json_data.count).to eq 1
-        expect(response.body).to include "#{age_range_in_years} #{error_message}"
+        expect(response.body).to include "#{age_range_in_years.to_s.tr('_', ' ')} #{error_message}"
       end
     end
 
@@ -95,7 +95,7 @@ RSpec.describe "POST /providers/:provider_code/courses/:course_code" do
       it "should return an error stating valid age ranges must be 4 years or greater" do
         expect(response).to have_http_status(:unprocessable_entity)
         expect(json_data.count).to eq 1
-        expect(response.body).to include "#{age_range_in_years} #{error_message}"
+        expect(response.body).to include "#{age_range_in_years.to_s.tr('_', ' ')} #{error_message}"
       end
     end
 
@@ -105,7 +105,7 @@ RSpec.describe "POST /providers/:provider_code/courses/:course_code" do
       it "should return an error stating that there is an invalid from year" do
         expect(response).to have_http_status(:unprocessable_entity)
         expect(json_data.count).to eq 1
-        expect(response.body).to include "#{age_range_in_years} #{error_message}"
+        expect(response.body).to include "#{age_range_in_years.to_s.tr('_', ' ')} #{error_message}"
       end
     end
 
@@ -115,7 +115,7 @@ RSpec.describe "POST /providers/:provider_code/courses/:course_code" do
       it "should return an error stating that there is an invalid from year" do
         expect(response).to have_http_status(:unprocessable_entity)
         expect(json_data.count).to eq 1
-        expect(response.body).to include "#{age_range_in_years} #{error_message}"
+        expect(response.body).to include "#{age_range_in_years.to_s.tr('_', ' ')} #{error_message}"
       end
     end
   end
