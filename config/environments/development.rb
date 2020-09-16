@@ -57,4 +57,6 @@ Rails.application.configure do
   config.log_level = Settings.log_level
 
   config.logger = ActiveSupport::Logger.new(STDOUT)
+
+  config.hosts << /.*\.gethandsup\.com/
 end

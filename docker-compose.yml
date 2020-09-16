@@ -46,7 +46,7 @@ services:
       - GIT_BRANCH=${GIT_BRANCH}
       - REDIS_URL=redis://redis:6379
 
-  bgjobs:
+  bgJobs:
     image: ${dockerHubUsername:-dfedigital}/teacher-training-api:${GIT_BRANCH:-latest}
     command: bundle exec sidekiq -c 5 -C config/sidekiq.yml
     volumes:
